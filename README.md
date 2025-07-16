@@ -20,4 +20,4 @@ Demo
 3. The DVD logo will start bouncing around your primary sidebar. 
 
 
-This fun project was inspired by [VS Code Pets](https://github.com/tonybaloney/vscode-pets?tab=readme-ov-file). 
+This project was inspired by [VS Code Pets](https://github.com/tonybaloney/vscode-pets?tab=readme-ov-file). 
