@@ -2,7 +2,7 @@ VS Code DVD Bouncer
 
 Make your code editor more fun with a DVD screensaver that bounces around your screen! 
 
-![Demo](assets/DVD_Bounce.gif)
+![Demo](https://github.com/Paing100/VS_Extension_DVD/blob/main/DVD/assets/DVD_Bounce.gif)
 
 Installation
 
