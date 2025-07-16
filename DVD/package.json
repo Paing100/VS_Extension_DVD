@@ -1,6 +1,7 @@
 {
   "name": "DVD",
-  "displayName": "DVD Bouncer",
+  "displayName": "Classic DVD Bouncer",
+  "publisher": "PaingThetKyaw",
   "description": "",
   "version": "0.0.1",
   "icon": "assets/dvd_logo_blue.png",
