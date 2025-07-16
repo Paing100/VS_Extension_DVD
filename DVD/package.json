@@ -14,6 +14,12 @@
   ],
   "main": "./extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "DVDBouncer.runDVDBouncer",
+        "title": "Start DVD Bouncer"
+      }
+    ],
     "views": {
       "explorer": [
         {

@@ -5,12 +5,15 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	context.subscriptions.push(
-		vscode.window.registerWebviewViewProvider(
-			'dvdView', 
-			new DVDViewProvider(context)
-		)
-	);
+	const disposable = vscode.commands.registerCommand('DVDBouncer.runDVDBouncer',
+		() => {
+			vscode.window.registerWebviewViewProvider(
+				'dvdView', 
+				new DVDViewProvider(context)
+			)
+		}
+	)
+	context.subscriptions.push(disposable);
 }
 
 function deactivate() {}
@@ -32,18 +35,21 @@ class DVDViewProvider {
 		const webview = webviewView.webview;
 
 		const imageUris = this.images.map(image => (
-			webview.asWebviewUri(vscode.Uri.joinPath(this.context.extensionUri, image)).toString()
+			webview.asWebviewUri(vscode.Uri.joinPath(this.context.extensionUri, 'assets/' + image)).toString()
 		));
+
+		const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(this.context.extensionUri, 'dvdScript.js')).toString();
 
 		webview.options = {
 			enableScripts: true, 
 			localResourceRoots: [this.context.extensionUri],
+
 		};
-		webview.html = getWebViewContent(imageUris);
+		webview.html = getWebViewContent(imageUris, scriptUri);
 	}
 }
 
-function getWebViewContent(imageUris) {
+function getWebViewContent(imageUris, scriptUri) {
 	const currentImage = imageUris[0];
 	const jsImageArray = JSON.stringify(imageUris);
 	return `
@@ -69,69 +75,9 @@ function getWebViewContent(imageUris) {
 			<body>
 				<img id="logo" height="20" width="25" src="${currentImage}"></img>
 				<script>
-					const images = ${jsImageArray};
-					const logo = document.getElementById('logo');
-					let x = 10;
-					let y = 10;
-					let dx = 100;
-					let dy = 100;
-					let index = 0;
-					let lastTimestamp = null;
-
-					function move(timestamp) {
-						if(!lastTimestamp) {
-							lastTimestamp = timestamp;
-							requestAnimationFrame(move);
-							return;
-						}
-
-						const delta = (timestamp - lastTimestamp) / 1000;
-						lastTimestamp = timestamp;
-
-						// Getting the boundries of the logo
-						const logoWidth = logo.offsetWidth;
-						const logoHeight = logo.offsetHeight;
-
-						// Getting the boundries of the window (i.e. webview)
-						const maxX = window.innerWidth - logoWidth;
-						const maxY = window.innerHeight - logoHeight;
-						let bounce = false;
-
-						x += dx * delta;
-						y += dy * delta;
-
-						if (x <= 0) {
-							x = 0; // if it hits left edge, put 0							
-							dx *= -1;
-							bounce = true;
-						} else if (x >= maxX) {
-							x = maxX; // if it hits right edge, put maxX
-							dx *= -1;
-							bounce = true;						
-						}
-
-						if (y <= 0) {
-							y = 0;
-							dy *= -1;
-							bounce = true;
-						} else if (y >= maxY) {
-							y = maxY;
-							dy *= -1;
-							bounce = true;
-						}
-
-						if (bounce) {
-							index = (index + 1) % 3; 
-							logo.src = images[index];
-						}
-
-						logo.style.left = x + 'px';
-						logo.style.top = y + 'px';
-
-						requestAnimationFrame(move); 
-					}
-					requestAnimationFrame(move); 
+					window.images = ${jsImageArray}
 				</script>
+				<script src="${scriptUri}"></script>
 			</body>
 		</html>
 	`;
