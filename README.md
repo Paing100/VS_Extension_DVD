@@ -2,7 +2,6 @@
 
 Make your code editor more fun with a DVD screensaver that bounces around your screen! ✨
 
-Demo
 <img src="https://raw.githubusercontent.com/Paing100/VS_Extension_DVD/main/DVD/assets/DVD_Bounce.gif" width="400" height="300"/>
 
 
