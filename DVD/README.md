@@ -1,65 +1,21 @@
-# DVD README
+VS Code DVD Bouncer 
 
-This is the README for your extension "DVD". After writing up a brief description, we recommend including the following sections.
+Make your code editor more fun with a DVD screensaver that bounces around your screen! 
 
-## Features
+![Demo](assets/DVD_Bounce.gif)
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Installation
 
-For example if there is an image subfolder under your extension project workspace:
+1. Open Visual Studio Code.
+2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl+Shift+X`.
+3. Search for "DVD Bouncer".
+4. Click on the Install button to install the extension.
 
-\!\[feature X\]\(images/feature-x.png\)
+Using VS Code DVD Bouncer 
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. After installation, open the Command Palette by pressing `Ctrl+Shift+P`.
+2. Type "Start DVD Bouncer" and select it to start the DVD screensaver.
+3. The DVD logo will start bouncing around your primary sidebar. 
 
-## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This fun project was inspired by [VS Code Pets](https://github.com/tonybaloney/vscode-pets?tab=readme-ov-file). 
